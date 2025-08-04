@@ -6,6 +6,7 @@ import { Hono } from 'hono';
 import { trpcServer } from '@hono/trpc-server';
 // CORS middleware for cross-origin requests
 import { cors } from 'hono/cors';
+import { authenticationRouter } from '@/server/routers/authentication-router';
 
 /**
  * Main tRPC Router
@@ -15,6 +16,7 @@ import { cors } from 'hono/cors';
  */
 export const appRouter = t.router({
   test: publicProcedure.query(() => ({ message: 'it works!' })),
+  authentication: authenticationRouter,
 });
 
 // Export router type for client-side type safety
